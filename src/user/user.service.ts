@@ -1,26 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { InjectModel } from "@nestjs/sequelize"
+import { User } from "./entities/user.entity"
 
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(@InjectModel(User) private userModel: typeof User) {}
+
+  async findOne(id: number) {
+    return await this.userModel.findOne({ where: {id} })
   }
 
-  findAll() {
-    return `This action returns all user`;
-  }
+  async findAll() {
+    const data = await this.userModel.findAll({ where: {} })
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
+    console.log('DATA:', data)
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+    return data.map(user => ({
+      id: user.id,
+      name: `${user.first_name} ${user.last_name}`,
+      email: user.email,
+      is_admin: user.type === "admin"
+    }))
   }
 }
