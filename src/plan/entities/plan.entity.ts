@@ -9,8 +9,8 @@ import {
   HasMany,
   BelongsTo,
 } from 'sequelize-typescript';
-import { Policy } from 'src/policy/entities/policy.entity';
-import { Product } from 'src/product/entities/product.entity';
+import { Policy } from '../../policy/entities/policy.entity';
+import { Product } from '../../product/entities/product.entity';
 
 @Table({
   timestamps: true,

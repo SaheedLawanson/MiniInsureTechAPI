@@ -8,8 +8,8 @@ import {
   HasOne,
   HasMany,
 } from 'sequelize-typescript';
-import { Policy } from 'src/policy/entities/policy.entity';
-import { Wallet } from 'src/wallet/entities/wallet.entity';
+import { Policy } from '../../policy/entities/policy.entity';
+import { Wallet } from '../../wallet/entities/wallet.entity';
 
 @Table({
   timestamps: true,

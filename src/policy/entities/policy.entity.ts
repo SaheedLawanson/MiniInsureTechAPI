@@ -8,8 +8,8 @@ import {
     ForeignKey,
     BelongsTo,
   } from 'sequelize-typescript';
-  import { Plan } from 'src/plan/entities/plan.entity';
-  import { User } from 'src/user/entities/user.entity';
+  import { Plan } from '../../plan/entities/plan.entity';
+  import { User } from '../../user/entities/user.entity';
   
   @Table({
     timestamps: true,

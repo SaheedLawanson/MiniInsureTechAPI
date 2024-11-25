@@ -11,7 +11,7 @@ import {
   HasMany,
 } from 'sequelize-typescript';
 import { ProductCategory } from './product_category.entity';
-import { Plan } from 'src/plan/entities/plan.entity';
+import { Plan } from '../../plan/entities/plan.entity';
 
 @Table({
   timestamps: true,

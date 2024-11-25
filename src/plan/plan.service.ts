@@ -3,10 +3,10 @@ import { Plan } from './entities/plan.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { UpdatePlanDto } from './dto/update-plan.dto';
 import { PurchasePlanDto } from './dto/purchase-plan.dto';
-import { ProductService } from 'src/product/product.service';
-import { WalletService } from 'src/wallet/wallet.service';
-import { PolicyService } from 'src/policy/policy.service';
-import { Policy } from 'src/policy/entities/policy.entity';
+import { ProductService } from '../product/product.service';
+import { WalletService } from '../wallet/wallet.service';
+import { PolicyService } from '../policy/policy.service';
+import { Policy } from '../policy/entities/policy.entity';
 
 @Injectable()
 export class PlanService {

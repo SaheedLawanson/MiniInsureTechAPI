@@ -8,9 +8,9 @@ import {
 import { Op } from 'sequelize';
 import { Policy } from './entities/policy.entity';
 import { InjectModel } from '@nestjs/sequelize';
-import { Product } from 'src/product/entities/product.entity';
-import { Plan } from 'src/plan/entities/plan.entity';
-import { ProductCategory } from 'src/product/entities/product_category.entity';
+import { Product } from '../product/entities/product.entity';
+import { Plan } from '../plan/entities/plan.entity';
+import { ProductCategory } from '../product/entities/product_category.entity';
 import { ActivatePolityDto } from './dto/activate-policy.dto';
 
 @Injectable()

@@ -1,6 +1,4 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { ProductCategory } from './entities/product_category.entity';
