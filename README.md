@@ -1,99 +1,78 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+3# Mini InsureTech API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Mini InsureTech API is a backend application designed to simulate a mini insuretech system. The API allows users to purchase insurance plans using their wallets, manage pending policies, and activate policies. 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
+- Fetch available products grouped by category and price.
+- Purchase plans with specified quantities, with wallet deductions.
+- Manage pending policies under purchased plans.
+- Activate policies and associate them with users.
+- Prevent duplicate policies for the same product category per user.
+- Filter and view policies by plan or activation status.
 
-## Description
+## Requirements
+- Docker
+- Node.js (Version 20 or higher)
+- npm (Included with Node.js)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Project Setup
 
-## Project setup
+### 1. Start the PostgreSQL Database
+- Run the following command to start a PostgreSQL database instance using Docker (replace `<username>`, `<password>` and `<database_name>` with your choice):
+  ```bash
+  docker run --name my-postgres-server \
+    -e POSTGRES_USER=<username> \
+    -e POSTGRES_PASSWORD=<password> \
+    -e POSTGRES_DB=<database_name> \
+    -p 5432:5432 \
+    -d postgres
+  ```
 
-```bash
-$ npm install
-```
+### 2. Clone the Repository
+- Clone the repository from github
+  ```bash
+  git clone https://github.com/SaheedLawanson/MiniInsureTechAPI
+  ```
 
-## Compile and run the project
+- Navigate into the project directory
+  ```bash
+  cd MiniInsureTechAPI
+  ```
 
-```bash
-# development
-$ npm run start
+### 3. Install Dependencies
+- Install the required depencencies
+  ```bash
+  npm install
+  ```
 
-# watch mode
-$ npm run start:dev
+### 4. Run Database Migration and Seeders
+- Setup environment variables using the `env.example` file as a guide
 
-# production mode
-$ npm run start:prod
-```
+- Set up the database with necessary migrations and seed data:
+  ```bash
+  npm run migrate:up
+  npm run seed:up
+  ```
 
-## Run tests
+### 5. Start the Application
+- Run the application start script
+  ```bash
+  npm start
+  ```
 
-```bash
-# unit tests
-$ npm run test
+### 6. Postman Collection
+To simplify API testing, a Postman collection is included in this repository. You can import the collection into Postman to test all the endpoints.
 
-# e2e tests
-$ npm run test:e2e
+1. Download the Collection: MiniInsureTechAPI.postman_collection.json
+2. Import into Postman:
+    - Open Postman.
+    - Click the Import button.
+    - Upload the MiniInsureTechAPI.postman_collection.json file.
 
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### 7. Future Improvements
+- Authentication & Authorization: Implement a robust authentication system to ensure that only authorized users can access certain endpoints.
+- Transaction Logs: Add a feature to log all wallet transactions, including plan purchases and refunds.
+- Wallet Top-Up: Allow users to fund their wallets via external payment gateways.
+- Policy Expiration: Introduce expiry dates for activated policies and automate notifications for renewals.
+- Advanced Filtering: Improve filtering options for the List Policies endpoint to include date ranges and user-specific searches.
+- Admin Dashboard: Build a dashboard to monitor plans, policies, and user activity.
