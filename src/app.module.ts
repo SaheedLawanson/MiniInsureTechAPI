@@ -13,6 +13,7 @@ import { ProductModule } from './product/product.module';
 import { WalletModule } from './wallet/wallet.module';
 import { PlanModule } from './plan/plan.module';
 import { Plan } from './plan/entities/plan.entity';
+import { PolicyModule } from './policy/policy.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { Plan } from './plan/entities/plan.entity';
     ProductModule,
     WalletModule,
     PlanModule,
+    PolicyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

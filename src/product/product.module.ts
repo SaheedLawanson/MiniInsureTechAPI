@@ -9,5 +9,6 @@ import { SequelizeModule } from '@nestjs/sequelize';
   imports: [SequelizeModule.forFeature([Product, ProductCategory])],
   controllers: [ProductController],
   providers: [ProductService],
+  exports: [ProductService, SequelizeModule.forFeature([Product, ProductCategory])]
 })
 export class ProductModule {}

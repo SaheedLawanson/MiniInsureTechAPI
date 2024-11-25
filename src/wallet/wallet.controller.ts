@@ -6,8 +6,7 @@ export class WalletController {
   constructor(private readonly walletService: WalletService) {}
 
   @Get()
-  findOne() {
-    const id = "1"
-    return this.walletService.getWalletByUserId(+id);
+  async findOne() {
+    return await this.walletService.getWalletByUserId(1);
   }
 }

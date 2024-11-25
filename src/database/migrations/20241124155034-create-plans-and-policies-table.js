@@ -11,7 +11,7 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       product_id: {
         allowNull: false,
@@ -45,6 +45,7 @@ module.exports = {
       policy_number: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       plan_id: {
         allowNull: false,
@@ -56,7 +57,7 @@ module.exports = {
         onUpdate: 'CASCADE',
       },
       user_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: "users",
@@ -65,7 +66,7 @@ module.exports = {
         onUpdate: 'CASCADE',
       },
       activated_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       created_at: {
@@ -77,6 +78,10 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.addIndex('policies', ['user_id'], {
+      name: 'idx_policies_user_id'
+    })
   },
 
   down: async (queryInterface, Sequelize) => {

@@ -7,6 +7,7 @@ import {
   UpdatedAt,
   ForeignKey,
   HasMany,
+  BelongsTo,
 } from 'sequelize-typescript';
 import { Policy } from 'src/policy/entities/policy.entity';
 import { Product } from 'src/product/entities/product.entity';
@@ -25,7 +26,7 @@ export class Plan extends Model {
   })
   id: number;
 
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: true })
   description: string;
 
   @ForeignKey(() => Product)
@@ -43,4 +44,7 @@ export class Plan extends Model {
 
   @HasMany(() => Policy)
   policies: Policy[];
+
+  @BelongsTo(() => Product, { as: 'product' })
+  product?: Product
 }
