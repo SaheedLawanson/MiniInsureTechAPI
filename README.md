@@ -1,4 +1,4 @@
-3# Mini InsureTech API
+# Mini InsureTech API
 
 Mini InsureTech API is a backend application designed to simulate a mini insuretech system. The API allows users to purchase insurance plans using their wallets, manage pending policies, and activate policies. 
 
